@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    volumes:
+      - paisql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/pai-meshi
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+volumes:
+  paisql:
