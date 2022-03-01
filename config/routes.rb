@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   # add new shop & show shop detail
   resources :shops, only: %i(create show) do
     collection do
-      get :search
+      get :search_result
     end
   end
 

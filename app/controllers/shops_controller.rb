@@ -1,7 +1,7 @@
 class ShopsController < ApplicationController
   require 'json'
-  skip_before_action :check_logged_in, only: %i(index all show)
-  before_action :set_q, only: %i(index search)
+  skip_before_action :check_logged_in, only: %i(index all show search_result)
+  # before_action :set_q, only: %i(index search)
 
   def index
     @shops = Shop.all.order(created_at: :desc).limit(8)
@@ -64,17 +64,14 @@ class ShopsController < ApplicationController
     end
   end
 
-  def search
-    @shops = @q.result
-  end
+  def search_result
+    @shops = @q.result.page(params[:page]).per(8)
 
+    render 'search'
+  end
 
   private
   def shop_params
     params.require(:shop).permit(:shop_name, :address, :shop_image, :parking)
-  end
-
-  def set_q
-    @q = User.ransack(params[:q])
   end
 end

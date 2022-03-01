@@ -2,20 +2,9 @@
     <!-- menu -->
     <%= render 'partial/menu' %>
 
-    <!-- what's new -->
-    <section>
-      <h1 class="text-red-500 font-bold text-xl">お知らせ</h1>
-      <ul class="mt-5">
-        <li>2022/3/1&nbsp;店名・住所からお店を検索できるようになりました</li>
-        <li>2022/2/28&nbsp;レビューの削除機能を追加しました</li>
-        <li>2022/2/27&nbsp;トップページに最近追加されたお店を表示するようにしました</li>
-        <li>2022/2/24&nbsp;Googleアカウントでログインが出来るようになりました</li>
-      </ul>
-    </section>
-
-    <!-- new shops -->
+    <!-- all shops -->
     <section class="mt-5">
-      <h1 class="text-red-500 font-bold text-xl">新着</h1>
+      <h1 class="text-red-500 font-bold text-xl">検索結果</h1>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mt-5 mb-12">
         <article>
           <section class="mt-6 grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
@@ -54,6 +43,7 @@
             </article>
             <% end %>
           </section>
+          <%= paginate @shops %>
         </article>
       </div>
     </section>
