@@ -54,3 +54,28 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# gems after setup
+
+# pagination
+gem 'kaminari'
+
+# searching
+gem 'ransack'
+
+# login with Google
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
+
+# http
+gem 'http'
+
+# management screen
+gem 'activeadmin'
+
+# image management
+gem 'carrierwave', '~> 2.0'
+gem 'fog-aws'
+
+# dammy data
+gem 'faker'

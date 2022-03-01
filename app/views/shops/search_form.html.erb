@@ -1,0 +1,25 @@
+  <div id="main-content" class="h-screen">
+    <!-- menu -->
+    <%= render 'partial/menu' %>
+
+    <!-- search shop -->
+    <section>
+      <h1 class="text-red-500 font-bold text-xl">登録店舗検索</h1>
+      <div class='flex items-center justify-center mt-10'>
+        <%= form_with url: search_path, local: true, method: :get, class: 'w-full' do %>
+        <div class="flex items-center w-1/2 mx-auto bg-white rounded-lg " x-data="{ search: '' }">
+          <div class="w-full">
+            <%= text_field_tag 'search', nil, placeholder: '店名で検索', class: 'w-full px-4 py-1 text-gray-800 rounded-full focus:outline-none' %>
+          </div>
+          <div>
+            <button type="submit" class="flex items-center bg-red-600 justify-center w-12 h-12 text-white rounded-r-lg" :class="(search.length > 0) ? 'bg-purple-500' : 'bg-gray-500 cursor-not-allowed'" :disabled="search.length == 0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </section>
+  </div>

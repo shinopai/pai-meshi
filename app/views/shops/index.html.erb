@@ -1,0 +1,59 @@
+  <div id="main-content">
+    <!-- menu -->
+    <%= render 'partial/menu' %>
+
+    <!-- what's new -->
+    <section>
+      <h1 class="text-red-500 font-bold text-xl">お知らせ</h1>
+      <ul class="mt-5">
+        <li>2022/2/28&nbsp;レビューの削除機能を追加しました</li>
+        <li>2022/2/27&nbsp;トップページに最近追加されたお店を表示するようにしました</li>
+        <li>2022/2/24&nbsp;Googleアカウントでログインが出来るようになりました</li>
+      </ul>
+    </section>
+
+    <!-- new shops -->
+    <section class="mt-5">
+      <h1 class="text-red-500 font-bold text-xl">新着</h1>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mt-5 mb-12">
+        <article>
+          <section class="mt-6 grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
+            <% @shops.each do |shop| %>
+            <article class="bg-white group relative rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform duration-200">
+              <div class="relative w-full h-80 md:h-64 lg:h-44">
+                <%= image_tag shop.shop_image.url, class: 'w-full h-full object-center object-cover', alt: shop.shop_name %>
+              </div>
+              <div class="px-3 py-4">
+                <h3 class="text-sm text-gray-500 pb-2">
+                  <%= link_to shop_path(shop.id), class: 'bg-red-600 py-1 px-2 text-white rounded-lg' do %>
+                  <span class="absolute inset-0"></span>
+                  <%= shop.shop_name %>
+                  <% end %>
+                </h3>
+                <p class="text-base font-semibold text-gray-900 group-hover:text-indigo-600 mt-2">
+                  <span class="material-icons" style="vertical-align: -5px;">
+                    location_on
+                  </span>
+                  <%= shop.address %></p>
+                <p class="text-base font-semibold text-gray-900 group-hover:text-indigo-600 mt-2">
+                  <span class="material-icons" style="vertical-align: -5px;">
+                    payments
+                  </span>
+                  <% shop.shop_payments.each do |payment| %>
+                  <span class="bg-gray-300 px-2 py-1 rounded"><%= payment.payment.payment_name %></span>
+                  <% end %>
+                </p>
+                <p class="text-base font-semibold text-gray-900 group-hover:text-indigo-600 mt-2">
+                  <% shop.shop_categories.each do |category| %>
+                  <span>#<%= category.category.category_name %></span>
+                  <% end %>
+                </p>
+                <p class="w-32 text-red-500 text-center ml-auto hover:bg-gray-300">コメントを投稿</p>
+              </div>
+            </article>
+            <% end %>
+          </section>
+        </article>
+      </div>
+    </section>
+  </div>

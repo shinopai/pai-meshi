@@ -1,0 +1,19 @@
+body {
+  background-image: image-url('foods.jpg');
+
+  #main {
+    position: relative;
+    width: 100%;
+    height: auto;
+
+    #main-content {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba($color: #fff8f8, $alpha: 0.9);
+      padding: 25px;
+    }
+  }
+}
