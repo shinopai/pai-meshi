@@ -1,0 +1,40 @@
+  <div id="main-content">
+    <!-- menu -->
+    <%= render 'partial/menu' %>
+
+    <!-- wants list -->
+    <section class="mt-5">
+      <h1 class="text-red-500 font-bold text-xl inline">行きたいお店リスト</h1>
+      <%= link_to new_user_want_path(current_user), class: 'bg-red-600 text-white px-2 py-1 rounded mt-5 inline-block ml-2' do %>
+      <span class="material-icons" style="vertical-align: -7px;">
+        add
+      </span>
+      お店を追加
+      <% end %>
+      <div class="w-full sm:w-1/2 md:w-1/3 mb-4 mt-5 px-2">
+        <% if current_user.wants.exists? %>
+        <% current_user.wants.each do |want| %>
+        <div class="relative bg-white rounded border my-3">
+          <div class="p-4">
+            <h3 class="text-lg font-bold">
+              <a class="stretched-link" href="#" title="Card 3">
+                <%= want.shop_name %>
+              </a>
+            </h3>
+            <span class="block my-2 text-sm text-gray-600" datetime="2019-01-01"><span class="bg-gray-300 px-2 rounded mr-2">住所</span><%= want.address %></span>
+            <p>
+              <span class="bg-gray-300 px-2 rounded text-sm mr-2">メモ</span>
+              <%= want.memo %>
+            </p>
+            <%= link_to user_want_path(current_user, want), method: :delete, data: { confirm: '削除して宜しいですか？' } do %>
+            <span class="material-icons mt-2">
+              delete
+            </span>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+    </section>
+  </div>

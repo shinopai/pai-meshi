@@ -40,4 +40,9 @@ Rails.application.routes.draw do
 
   # new review form & add new review & delete review
   resources :reviews, only: %i(new create destroy)
+
+  # wants list page
+  resources :users do
+    resources :wants, except: %i(edit show update)
+  end
 end

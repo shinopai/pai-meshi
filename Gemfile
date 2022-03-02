@@ -79,3 +79,9 @@ gem 'fog-aws'
 
 # dammy data
 gem 'faker'
+
+# japanization rails
+gem 'rails-i18n'
+
+# management env value
+gem 'dotenv-rails'

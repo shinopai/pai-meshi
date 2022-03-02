@@ -2,18 +2,16 @@ class ReviewsController < ApplicationController
   # skip_before_action :check_logged_in, only: %i(index)
   before_action :find_user, except: %i(destroy)
   before_action :find_shop, except: %i(destroy)
-  before_action :init_review
+  before_action :init_review, except: %i(destroy)
 
   def new
   end
 
   def create
-    logger.debug('●●')
-    logger.debug(params)
-    review = @user.reviews.new(review_params)
-    review.shop_id = @shop.id
+    @review = @user.reviews.new(review_params)
+    @review.shop_id = @shop.id
 
-    if review.save
+    if @review.save
       redirect_to shop_path(@shop), notice: 'レビューを投稿しました'
     else
       render 'new'

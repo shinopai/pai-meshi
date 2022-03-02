@@ -6,7 +6,7 @@
     <h1 class="text-red-500 font-bold text-xl">感動を投稿する</h1>
     <div class="md:p-12 flex flex-row flex-wrap">
       <%= form_with model: @review, url: reviews_path(user: @current_user, shop: @shop), local: true, class: 'md:w-1/2-screen m-0 p-5 bg-white w-2/3 mx-auto tw-h-full' do |new_review| %>
-      <%= render 'partial/review_error_messages', resource: @review %>
+      <%= render 'partial/validation_error_messages', model: @review %>
 
       <div class="text-lg text-indigo-900">「<%= @shop.shop_name %>」に行ったときのことを教えて下さい</div>
 

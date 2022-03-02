@@ -20,4 +20,5 @@ class User < ApplicationRecord
 
   # relation
   has_many :reviews, dependent: :destroy
+  has_many :wants, dependent: :destroy
 end

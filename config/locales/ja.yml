@@ -1,6 +1,18 @@
 ---
 ja:
   activerecord:
+    models:
+      want: 行きたい
+      review: 評価
+    attributes:
+      want:
+        shop_name: 店舗名
+        address: 住所
+        memo: メモ
+      review:
+        price: 予算
+        score: 点数
+        comment: コメント
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_28_050118) do
+ActiveRecord::Schema.define(version: 2022_03_01_102412) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -88,10 +88,21 @@ ActiveRecord::Schema.define(version: 2022_02_28_050118) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "wants", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "shop_name", null: false
+    t.string "address", null: false
+    t.text "memo"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_wants_on_user_id"
+  end
+
   add_foreign_key "reviews", "shops"
   add_foreign_key "reviews", "users"
   add_foreign_key "shop_categories", "categories"
   add_foreign_key "shop_categories", "shops"
   add_foreign_key "shop_payments", "payments"
   add_foreign_key "shop_payments", "shops"
+  add_foreign_key "wants", "users"
 end
