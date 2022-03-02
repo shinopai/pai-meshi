@@ -16,6 +16,7 @@ test:
 
 production:
   <<: *default
-  database: pai_meshi_production
-  username: pai_meshi
-  password: <%= ENV['PAI_MESHI_DATABASE_PASSWORD'] %>
+  database: <%= ENV['PAI_MESHI_DATABASE'] %>
+  host: <%= ENV['PAI_MESHI_HOST'] %>
+  username: <%= ENV['PAI_MESHI_USERNAME'] %>
+  password: <%= ENV['PAI_MESHI_PASSWORD'] %>
