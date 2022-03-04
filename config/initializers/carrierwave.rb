@@ -7,6 +7,7 @@ CarrierWave.configure do |config|
     config.fog_provider = 'fog/aws'
     config.fog_directory  = 'pai-meshi'
     config.fog_public = false
+    config.asset_host = 'https://s3.amazonaws.com/pai-meshi'
     config.fog_credentials = {
       provider: 'AWS',
       aws_access_key_id: Rails.application.credentials.aws[:access_key_id],

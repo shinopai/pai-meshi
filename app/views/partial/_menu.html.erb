@@ -1,4 +1,4 @@
-<ul class="fixed bg-gray-300 p-3 rounded cursor-pointer right-5 top-20 hidden menu z-10 <%= 'w-36' if current_user %>">
+<ul class="fixed bg-gray-300 p-3 rounded cursor-pointer right-5 top-20 hidden google-login z-10 <%= 'w-36' if current_user %>">
   <% if current_user %>
   <li><%= link_to 'My Page', mypage_path, class: 'hover:underline' %></li>
   <li class="mt-2"><%= link_to 'Sign out', log_out_path %></li>

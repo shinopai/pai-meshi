@@ -5,10 +5,10 @@
     <!-- shop detail -->
     <section class="mt-5">
       <h1 class="text-red-500 font-bold text-xl"><%= @shop.shop_name %></h1>
-      <main class="flex items-center p-10 w-5/6 mx-auto h-full bg-white mt-5">
-        <div class="border-t border-b pt-8 grid grid-cols-2 gap-8">
+      <main class="flex items-center p-2 lg:p-10 lg:w-5/6 mx-auto h-full bg-white mt-5">
+        <div class="border-t border-b pt-8 grid lg:grid-cols-2 gap-8">
           <div class="flex flex-col justify-start">
-            <div class="flex flex-col w-full object-cover h-4/6 justify-items-start border rounded-lg overflow-hidden" style="min-heigth:320px">
+            <div class="flex flex-col w-full object-cover lg:h-4/6 justify-items-start border rounded-lg overflow-hidden" style="min-heigth:320px">
               <%= image_tag @shop.shop_image.url, class: 'w-full h-full object-cover', alt: @shop.shop_name %>
             </div>
           </div>
@@ -42,14 +42,16 @@
       <!-- review -->
       <% if @shop.reviews.exists? %>
       <% @shop.reviews.each do |review| %>
-      <div class="bg-white w-5/6 mx-auto mt-5 rounded-lg p-3  flex flex-col justify-center items-center md:items-start shadow-lg mb-4">
-        <div class="flex flex-row justify-center mr-2">
-          <%= image_tag review.user.image, class: 'rounded-full w-10 h-10 mr-4 shadow-lg mb-4', width: 48, height: 48, alt: review.user.name %>
-          <h3 class="text-purple-600 font-semibold text-lg text-center md:text-left "><%= review.user.name %></h3>
+      <div class="bg-white lg:w-5/6 mx-auto mt-5 rounded-lg p-3  flex flex-col justify-center items-center md:items-start shadow-lg mb-4">
+        <div class="mr-auto lg:flex flex-row justify-center mr-2">
+          <div class="flex">
+            <%= image_tag review.user.image, class: 'rounded-full w-10 h-10 mr-4 shadow-lg mb-4', width: 48, height: 48, alt: review.user.name %>
+            <h3 class="text-purple-600 font-semibold text-lg text-center md:text-left "><%= review.user.name %></h3>
+          </div>
           <span class="ml-2 mt-1"><span class="bg-gray-300 px-2 rounded">予算</span>&nbsp;<%= review.price.to_s(:delimited) %>円</span>
           <span class="ml-2 mt-1"><span class="bg-gray-300 px-2 rounded">評価</span>&nbsp;<%= review.score %></span>
         </div>
-        <p style="width: 90%" class="text-gray-600 text-lg text-center md:text-left "><%= review.comment %></p>
+        <p style="width: 90%" class="text-gray-600 text-lg mt-4 lg:mt-0"><%= review.comment %></p>
         <% if check_review(review.user) %>
         <%= link_to review_path(review), class: 'ml-auto', method: :delete, data: { confirm: 'レビューを削除して宜しいですか?' } do %>
         <span class="material-icons">

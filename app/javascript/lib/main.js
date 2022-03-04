@@ -4,6 +4,16 @@ $(document).on('turbolinks:load', function () {
     $('.menu').toggleClass('hidden');
   });
 
+  // header menu sp
+  $('.menu-button-sp').on('click', function () {
+    $('.menu-sp').toggleClass('hidden');
+  });
+
+  // google login
+  $('.google-login-button').on('click', function () {
+    $('.google-login').toggleClass('hidden');
+  });
+
   // parking range
   $('#parking').change(function () {
     $('#parking-value').text($(this).val());
